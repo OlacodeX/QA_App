@@ -20,4 +20,16 @@ class Question extends Model
         $this->attributes['slug'] = Str::slug($value);
 
     }
+
+    //An acessor
+    //This returns a url for each question
+    public function getUrlAttribute() {
+        return route("questions.show", $this->id);
+        //Above line of code returns the show url for the question with the specified id.
+    }
+    //The acessor below takes the date and format it like 1 day ago etc using the diffForHumans() function.
+    public function getCreatedDateAttribute() {
+        return $this->created_at->diffForHumans();
+    }
+
 }

@@ -40,4 +40,11 @@ class User extends Authenticatable
     public function questions(){
         return $this->hasMany(Question::class);
     }
+
+    //An acessor
+    //This returns a url for each question
+    public function getUrlAttribute() {
+        return '#';
+        //Above line of code returns the show url for the question with the specified id.
+    }
 }
