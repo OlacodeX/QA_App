@@ -24,7 +24,7 @@ class Question extends Model
     //An acessor
     //This returns a url for each question
     public function getUrlAttribute() {
-        return route("questions.show", $this->id);
+        return route("questions.show", $this->slug);
         //Above line of code returns the show url for the question with the specified id.
     }
     //The acessor below takes the date and format it like 1 day ago etc using the diffForHumans() function.
@@ -40,5 +40,8 @@ class Question extends Model
         }
         return "unanswered";
     }
-
+// New accessor to display question with html formating
+public function getBodyHtmlAttribute(){
+    return \Parsedown::instance()->text($this->body);
+}
 }

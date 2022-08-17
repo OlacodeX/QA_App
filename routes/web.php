@@ -21,5 +21,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-//Questions resource
-Route::resource('questions', 'QuestionsController');
+//Questions resource exclude the show route to be able to manually define it to use slug
+Route::resource('questions', 'QuestionsController')->except('show');
+
+//Show route
+Route::get('/questions/{slug}', 'QuestionsController@show')->name('questions.show');
