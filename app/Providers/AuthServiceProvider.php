@@ -25,6 +25,12 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        //using gate to restrict edit and delete rights to only the post owner
+        \Gate::define('update-question', function($user, $question){
+            return $user->id == $question->user_id;
+        });
+        \Gate::define('delete-question', function($user, $question){
+           return $user->id == $question->user_id;
+        });
     }
 }
