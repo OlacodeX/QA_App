@@ -33,7 +33,7 @@ class QuestionPolicy
     public function delete(User $user, Question $question)
     {
         //Make it such that any question that has more than one answer cannot be deleted even by the owner.
-        return $user->id == $question->user_id && $question->answers < 1;
+        return $user->id == $question->user_id && $question->answers_count < 1;
     }
 
   
