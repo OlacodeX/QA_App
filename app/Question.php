@@ -44,6 +44,7 @@ class Question extends Model
 public function getBodyHtmlAttribute(){
     return \Parsedown::instance()->text($this->body);
 }
+//A question can have many answers
 public function answers(){
     return $this->hasMany(Answer::class);
 }
