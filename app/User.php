@@ -47,4 +47,11 @@ class User extends Authenticatable
         return '#';
         //Above line of code returns the show url for the question with the specified id.
     }
+    // This accessor uses gravatar API to generate profile images. You can get documentation from gravatar.com
+    public function getAvatarAttribute() {
+        $email = $this->email;
+        $size = 32;
+        return "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) ) . "?s=" . $size;
+
+    }
 }
